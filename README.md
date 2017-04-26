@@ -8,14 +8,24 @@ Two tiny scripts to
 ## Usage Example
 
 ```
-$ ./tinycore-extract.sh CorePure64-8.0.iso
-$ git clone https://github.com/tycho/cpuid.git
-$ cd cpuid
-$ echo 'LDFLAGS += -static' >> GNUmakefile
-$ make
-$ cd ..
-$ # print CPUID on login
-$ fakeroot cp cpuid/cpuid core/usr/bin
+$ ./tinycore-extract.sh
+No ISO file specified. Download latest ISO v8.x? [yn]
+y
+--2017-04-26 08:54:01--  http://www.tinycorelinux.net/8.x/x86_64/release/CorePure64-current.iso
+Resolving www.tinycorelinux.net (www.tinycorelinux.net)... 89.22.99.37
+Connecting to www.tinycorelinux.net (www.tinycorelinux.net)|89.22.99.37|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13225984 (13M) [application/octet-stream]
+Saving to: ‘CorePure64-current.iso’
+
+CorePure64-current.iso                             100%[================================================================================================================>]  12.61M  3.79MB/s    in 3.3s    
+
+2017-04-26 08:54:04 (3.79 MB/s) - ‘CorePure64-current.iso’ saved [13225984/13225984]
+
+25478 blocks
+$ fakeroot cp `which cpuid` core/usr/bin
+$ ln -s /lib core/lib64 # Ubuntu software excepts libs in /lib64
+$ # run cpuid on login
 $ fakeroot bash -c 'echo cpuid -c0 >core/etc/profile.d/cpuid.sh'
 $ # do not prompt to boot
 $ sed -i.orig /prompt/d iso/boot/isolinux/isolinux.cfg
