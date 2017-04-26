@@ -1,6 +1,6 @@
 # Custom TinyCore Linux
 
-Two tiny scripts to
+Two tiny scripts that helps remastering a TinyCore ISO to a new custom version:
 
   1. Extract a tinycore linux ISO to `iso` and `core` directories
   2. Repack them back to a single ISO
