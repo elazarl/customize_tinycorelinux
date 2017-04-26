@@ -29,6 +29,19 @@ $ # run cpuid on login
 $ fakeroot bash -c 'echo cpuid -c0 >core/etc/profile.d/cpuid.sh'
 $ # do not prompt to boot
 $ sed -i.orig /prompt/d iso/boot/isolinux/isolinux.cfg
-$ ./tinycore-repack.sh cpuid.iso
-$ kvm -cdrom cpuid.iso
+$ ./tinycore-repack.sh
+No output ISO file specified. Use default name tinycore.iso? [y]
+y
+cpio: File ./tmpcoregz grew, 7995392 new bytes not copied
+41255 blocks
+Size of boot image is 4 sectors -> No emulation
+ 47.37% done, estimate finish Wed Apr 26 10:48:44 2017
+ 94.71% done, estimate finish Wed Apr 26 10:48:44 2017
+Total translation table size: 2048
+Total rockridge attributes bytes: 0
+Total directory bytes: 4202
+Path table size(bytes): 38
+Max brk space used 22000
+10573 extents written (20 MB)
+$ kvm -cdrom tinycore.iso
 ```
